@@ -15,7 +15,7 @@ enum Direction { UP, DOWN, LEFT, RIGHT };
 /*!
  * @brief Status of the ship (Okay or Sunk).
  */
-enum Status {OKAY, SUNK};
+enum Status { OKAY, SUNK };
 
 /*!
  * @brief Position of the ship, represented by ints
@@ -34,22 +34,25 @@ struct Position {
      * @param row Integer specifying row (0-9)
      * @param col Integer specifying column (0-9)
      */
-    Position(const int row, const int col) : row(row), col(col) {};
+    Position(const int row, const int col) : row(row), col(col) {
+    };
     /*!
      * @brief Construct Position from position String, made of two characters, the
      * first being a letter specifying the column and the second being a number specifying
      * the row.
      * @param positionSpec String of length 2 specifying the position
      */
-    explicit Position(const std::string& positionSpec): Position(rowFromSpec(positionSpec), colFromSpec(positionSpec)){};
-private:
-    static int rowFromSpec(const std::string& positionSpec) {
-        return positionSpec[1];
-    };
-    static int colFromSpec(const std::string& positionSpec) {
-        return std::toupper(positionSpec[0])-'A';
+    explicit Position(const std::string &positionSpec): Position(rowFromSpec(positionSpec), colFromSpec(positionSpec)) {
     };
 
+private:
+    static int rowFromSpec(const std::string &positionSpec) {
+        return positionSpec[1];
+    };
+
+    static int colFromSpec(const std::string &positionSpec) {
+        return std::toupper(positionSpec[0]) - 'A';
+    };
 };
 
 
@@ -74,8 +77,15 @@ private:
      * @brief Position of the start of the ship.
      */
     Position position;
-    public:
-    Ship();
+
+public:
+    /*!
+     * @brief
+     * @param length Length of the ship
+     * @param direction Direction the ship is facing
+     * @param position Position of the Ship on the board
+     */
+    Ship(int length, Direction direction, Position position);
 
     /*!
      * @brief Check if the ship has been sunk.
@@ -91,11 +101,7 @@ private:
      * @return true if the position would be a hit, and false otherwise
      */
     bool checkHit(Position possibleHit);
-
 };
-
-
-
 
 
 #endif //SHIPS_H
