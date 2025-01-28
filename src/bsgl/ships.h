@@ -113,6 +113,7 @@ public:
 
 
 // region Specific Ships
+
 /*!
  * @brief Represents a Carrier, a ship with length 5
  */
@@ -126,32 +127,38 @@ public:
  * @brief Represents a Battleship, a ship with length 4
  */
 class Battleship : public Ship {
-    public:
-    Battleship(const Direction direction, const Position position): Ship(4, direction, position) {}
+public:
+    Battleship(const Direction direction, const Position position): Ship(4, direction, position) {
+    }
 };
+
 /*!
  * @brief Represents a Destroyer, a ship with length 3
  */
 class Destroyer : public Ship {
 public:
-    Destroyer(const Direction direction, const Position position): Ship(3, direction, position) {}
+    Destroyer(const Direction direction, const Position position): Ship(3, direction, position) {
+    }
 };
 
 /*!
  * @brief Represents a Submarine, a ship with length 3
  */
 class Submarine : public Ship {
-    public:
-    Submarine(const Direction direction, const Position position): Ship(3, direction, position) {}
+public:
+    Submarine(const Direction direction, const Position position): Ship(3, direction, position) {
+    }
 };
 
 /*!
  * @brief Represents a Patrol Boat, a ship with length 2
  */
 class PatrolBoat : public Ship {
-    public:
-    PatrolBoat(const Direction direction, const Position position): Ship(2, direction, position) {}
+public:
+    PatrolBoat(const Direction direction, const Position position): Ship(2, direction, position) {
+    }
 };
+
 // endregion Specific Ships
 
 #endif //SHIPS_H
