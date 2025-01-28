@@ -60,7 +60,6 @@ private:
  *
  */
 class Ship {
-private:
     /*!
      * @brief The length of the ship, equal to number of hits to sink.
      */
@@ -85,7 +84,9 @@ public:
      * @param direction Direction the ship is facing
      * @param position Position of the Ship on the board
      */
-    Ship(int length, Direction direction, Position position);
+    Ship(const int length, const Direction direction, const Position position): length(length), hits(0),
+        direction(direction), position(position) {
+    };
 
     /*!
      * @brief Check if the ship has been sunk.
@@ -100,7 +101,14 @@ public:
      * @param possibleHit Position of the possible hit to check
      * @return true if the position would be a hit, and false otherwise
      */
-    bool checkHit(Position possibleHit);
+    [[nodiscard]] bool checkHit(const Position &possibleHit) const;
+
+    /*!
+     * @brief Checks whether This overlaps another Ship.
+     * @param other Other ship to check if it overlaps
+     * @return True if there is an overlap, false otherwise
+     */
+    [[nodiscard]] bool checkOverlap(const Ship &other) const;
 };
 
 
